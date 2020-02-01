@@ -9,18 +9,41 @@ public class ship_movements : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-	moveSpeed = 5f;
-	thrustSpeed = 0.5f;
+	moveSpeed = 5;
+	thrustSpeed = 100;
+	//GetComponent<Rigidbody>().drag = 5000;
     }
 
     // Update is called once per frame
     void Update()
     {
 	transform.Translate(moveSpeed*Input.GetAxis("Horizontal")*Time.deltaTime,0f,moveSpeed*Input.GetAxis("Vertical")*Time.deltaTime);
+	GetComponent<Rigidbody>().freezeRotation = true;
 
-	if (Input.GetKeyDown(KeyCode.W))
+	if (Input.GetKey(KeyCode.W))
 	{
-	    this.GetComponent<Rigidbody>().AddForce(transform.forward*thrustSpeed);
+		//GetComponent<Rigidbody>().drag = 1;
+		GetComponent<Rigidbody>().AddForce(transform.forward*thrustSpeed, ForceMode.Acceleration);
+
+	}
+
+	else if (Input.GetKey(KeyCode.S))
+	{
+		//GetComponent<Rigidbody>().drag = 1;
+		GetComponent<Rigidbody>().AddForce(transform.forward*thrustSpeed, ForceMode.Acceleration);
 	}
     }
+/*
+	else
+	{
+		GetComponent<Rigidbody>().drag = 5000;
+		GetComponent<Rigidbody>().AddForce(transform.forward*0);
+	}*/
+    //}
+/*
+    void OnMouseDown()
+    {
+	GetComponent<Rigidbody>().AddForce(transform.forward*thrustSpeed, ForceMode.Impulse);
+    }
+*/
 }
