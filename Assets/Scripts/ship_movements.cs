@@ -9,7 +9,7 @@ public class ship_movements : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-	moveSpeed = 5;
+	moveSpeed = 25;
 	thrustSpeed = 100;
 	//GetComponent<Rigidbody>().drag = 5000;
     }
@@ -18,8 +18,8 @@ public class ship_movements : MonoBehaviour
     void Update()
     {
 	transform.Translate(moveSpeed*Input.GetAxis("Horizontal")*Time.deltaTime,0f,moveSpeed*Input.GetAxis("Vertical")*Time.deltaTime);
-	GetComponent<Rigidbody>().freezeRotation = true;
-
+	//GetComponent<Rigidbody>().freezeRotation = true;
+/*
 	if (Input.GetKey(KeyCode.W))
 	{
 		//GetComponent<Rigidbody>().drag = 1;
@@ -31,7 +31,7 @@ public class ship_movements : MonoBehaviour
 	{
 		//GetComponent<Rigidbody>().drag = 1;
 		GetComponent<Rigidbody>().AddForce(transform.forward*thrustSpeed, ForceMode.Acceleration);
-	}
+	}*/
     }
 /*
 	else

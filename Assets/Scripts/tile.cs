@@ -8,7 +8,7 @@ public class tile : MonoBehaviour
     void Start()
     {
         Color oldCol = gameObject.GetComponent<Renderer>().material.color;
-        Color newCol = new Color(oldCol.r, oldCol.g, oldCol.b, 0.25f);
+        Color newCol = new Color(oldCol.r, oldCol.g, oldCol.b, 0.15f);
         gameObject.GetComponent<Renderer>().material.color = newCol;
     }
 
