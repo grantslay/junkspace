@@ -124,8 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d94391bcf061040029fe5ab4013a590d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mothership: {fileID: 9157430342484063774, guid: 117aacd6fc4604d25858bc51a9a34eca,
-    type: 3}
+  target: {fileID: 4279552494580596324, guid: 8d85e9a520da546ffbb9d09b5887feda, type: 3}
   laser: {fileID: 5987238410692480947, guid: e8389c15dfc8d4081948f65452fa5674, type: 3}
   speed: 10
   shootTimer: 0.1

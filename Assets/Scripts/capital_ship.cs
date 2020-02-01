@@ -25,6 +25,10 @@ public class capital_ship : MonoBehaviour
             health -= 25;
             Destroy(enemy_projectile.gameObject);
             Debug.Log(health);
+            if(health == 0)
+            {
+                Destroy(this.gameObject);
+            }
         }
     }
 }
