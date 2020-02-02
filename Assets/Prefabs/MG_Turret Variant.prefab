@@ -56,6 +56,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c885942aaf594fdbaf327c2df502f13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3019369173121648139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4279552494580596324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbc3280b1717c71468a3dddbf295565f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 2137643408567369614, guid: a0af6b042c65a4fa8a9354d209448ed5,
+    type: 3}
+  damage: 10
+  fire_rate: 0.2
+  speed: 75
 --- !u!1001 &5207827237303461741
 PrefabInstance:
   m_ObjectHideFlags: 0

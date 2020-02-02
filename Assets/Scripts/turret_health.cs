@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class turret_health : MonoBehaviour
 {
-    public float maxHealth = 500;
+    public float maxHealth = 100;
     public float health;
     public GameObject healthbar;
     // Start is called before the first frame update

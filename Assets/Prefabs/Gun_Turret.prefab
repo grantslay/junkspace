@@ -91,6 +91,7 @@ GameObject:
   - component: {fileID: 4855936081422751969}
   - component: {fileID: 4205282916536201769}
   - component: {fileID: 5478079041324742636}
+  - component: {fileID: 4841675165244080690}
   m_Layer: 0
   m_Name: MG_Turret
   m_TagString: Friendly
@@ -161,6 +162,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c885942aaf594fdbaf327c2df502f13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4841675165244080690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4079177798002765083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b670a18329f1741cba91f0cc377b9f7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 500
+  health: 0
+  healthbar: {fileID: 0}
 --- !u!1 &4452035401053004852
 GameObject:
   m_ObjectHideFlags: 0
@@ -682,9 +698,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbc3280b1717c71468a3dddbf295565f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 0}
+  projectile: {fileID: 2137643408567369614, guid: a0af6b042c65a4fa8a9354d209448ed5,
+    type: 3}
   damage: 10
-  fire_rate: 0.2
+  fire_rate: 1
   speed: 75
 --- !u!136 &629083445649921175
 CapsuleCollider:

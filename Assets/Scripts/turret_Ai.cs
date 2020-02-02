@@ -1,3 +1,4 @@
+
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,12 +14,12 @@ public class turret_Ai : MonoBehaviour
 
     private Queue<GameObject> Targets;
 
-    private Animator Gunny;
+    //private Animator Gunny;
 
     private float shootTimer = 1f;
 
     public int damage = 10;
-    public float fire_rate = 0.2f;
+    public float fire_rate = 1f;
     public float speed = 75f;
 
     // Start is called before the first frame update
@@ -36,7 +37,7 @@ public class turret_Ai : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Gunny = gameObject.GetComponent<Animator>();
+        //Gunny = gameObject.GetComponent<Animator>();
 
         if (Target != null)
         {
@@ -61,7 +62,7 @@ public class turret_Ai : MonoBehaviour
             shootTimer -= Time.deltaTime;
             if (shootTimer <= 0f)
             {
-                Gunny.SetBool("Firing", true);
+                //Gunny.SetBool("Firing", true);
                 projectile.GetComponent<enemy_laser>().damage = 10;
                 Instantiate(projectile, transform.position + new Vector3(0,0,0), transform.rotation);
                 shootTimer = fire_rate;
@@ -69,7 +70,7 @@ public class turret_Ai : MonoBehaviour
 
             else
             {
-                Gunny.SetBool("Firing", false);
+                //Gunny.SetBool("Firing", false);
             }
         }
 
