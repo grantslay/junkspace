@@ -5,7 +5,7 @@ using UnityEngine;
 public class enemy_laser : MonoBehaviour
 {
 
-    public float shootingSpeed = 5;
+    public float shootingSpeed = 75;
     // Start is called before the first frame update
     void Start()
     {

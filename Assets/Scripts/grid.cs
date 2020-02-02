@@ -33,7 +33,8 @@ public class grid : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Camera camera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
+            Ray ray = camera.ScreenPointToRay(Input.mousePosition);
             RaycastHit rayHit;
             if (Physics.Raycast(ray, out rayHit))
             {

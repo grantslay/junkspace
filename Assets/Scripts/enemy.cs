@@ -7,7 +7,7 @@ public class enemy : MonoBehaviour
     public GameObject target;
     public GameObject laser;
     public float speed = 2;
-    public float shootTimer = 3;
+    public float shootTimer = 1;
     public float health;
     public GameObject Junk_01;
     public GameObject Junk_02;
@@ -41,7 +41,7 @@ public class enemy : MonoBehaviour
             if (shootTimer <= 0f)
             {
                 Instantiate(laser, transform.position, transform.rotation);
-                shootTimer = 3;
+                shootTimer = 1;
             }
         }
 		

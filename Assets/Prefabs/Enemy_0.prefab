@@ -77,9 +77,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 4279552494580596324, guid: 8d85e9a520da546ffbb9d09b5887feda, type: 3}
-  laser: {fileID: 5987238410692480947, guid: e8389c15dfc8d4081948f65452fa5674, type: 3}
+  laser: {fileID: 4854598411127146498, guid: e8389c15dfc8d4081948f65452fa5674, type: 3}
   speed: 10
-  shootTimer: 0.00001
+  shootTimer: 1
   health: 0
   Junk_01: {fileID: 4421017378447142864, guid: b4214f6889d974fb2b2fb2fd635a4876, type: 3}
   Junk_02: {fileID: 6407434645159249158, guid: 0b89385571f3146338e146d24d5ab6df, type: 3}

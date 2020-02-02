@@ -6,41 +6,36 @@ public class ship_movements : MonoBehaviour
 {
     public float moveSpeed;
     public float thrustSpeed;
-    public float junk_counter;
-    public float health;
+    private float rotation;
     // Start is called before the first frame update
     void Start()
     {
 	    moveSpeed = 25;
 	    thrustSpeed = 100;
-	    junk_counter = 0;
-	    health = 100;
+        rotation = transform.rotation.y;
     }
 
     // Update is called once per frame
     void Update()
     {
-	    transform.Translate(moveSpeed*Input.GetAxis("Horizontal")*Time.deltaTime,0f,moveSpeed*Input.GetAxis("Vertical")*Time.deltaTime);
+        transform.Translate(0f, 0f, moveSpeed * Input.GetAxis("Vertical") * Time.deltaTime);
+
+        if (Input.GetKey("a"))
+        {
+            Quaternion rot = Quaternion.identity;
+            rot.eulerAngles = new Vector3(0f, rotation - 2, 0f);
+            transform.rotation = rot;
+            rotation -= 2;
+        }
+
+        if (Input.GetKey("d"))
+        {
+            Quaternion rot = Quaternion.identity;
+            rot.eulerAngles = new Vector3(0f, rotation + 2, 0f);
+            transform.rotation = rot;
+            rotation += 2;
+        }
+
     }
     
-    private void OnTriggerEnter(Collider collider)
-    {
-        if (collider.gameObject.tag == "Enemy_Laser")
-        {
-            health -= 5;
-            Destroy(collider.gameObject);
-            Debug.Log(health);
-            
-            if(health == 0)
-            {
-                Destroy(this.gameObject);
-            }
-        }
-        
-        else if (collider.gameObject.tag == "Junk")
-        {
-        	Destroy(collider.gameObject);
-        	junk_counter++;
-    	}
-    }
 }
