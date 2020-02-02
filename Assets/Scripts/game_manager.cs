@@ -11,6 +11,7 @@ public class game_manager : MonoBehaviour
     public GameObject player;
     public GameObject camera;
     public int enemy_spawns;
+    public float spawnTimer = 10f;
     public ArrayList enemies = new ArrayList();
     //public GameObject[] enemies;
     public int power;
@@ -82,23 +83,16 @@ public class game_manager : MonoBehaviour
                     break;
             }
         }
-        
-        else if (enemies.Count > 0)
-        {
-        	for (int i = 0; i < enemies.Count; i++)
-        	{
-        		if (enemies[i] == null)
-        		{
-        			enemies.RemoveAt(i);
-        		}
-        	}
-        }
-        
-        else //if (enemy_spawns <= 0 && enemies.Count <= 0)	//does the ArrayList get decremented when the enemies get destroyed
+
+        spawnTimer -= Time.deltaTime;
+
+
+        if(spawnTimer <= 0) //if (enemy_spawns <= 0 && enemies.Count <= 0)	//does the ArrayList get decremented when the enemies get destroyed
         {
 			enemy_spawns = (int) System.Math.Pow(2, power);
 			power++;
 			wave_number++;
+            spawnTimer = 10f;
 		}
         
         void OnGUI()

@@ -32,19 +32,6 @@ public class player : MonoBehaviour
             }
         }
 
-
-    {
-        if (Input.GetKey("space"))
-        {
-            shootTimer -= Time.deltaTime;
-            if (shootTimer <= 0f)
-            {
-                Transform spawnPoint = transform.GetChild(1);
-                Instantiate(laser, new Vector3(spawnPoint.position.x, spawnPoint.position.y, spawnPoint.position.z), transform.rotation);
-                shootTimer = 0.5f;
-            }
-        }
-
     }
 
     void OnTriggerEnter(Collider collider)
