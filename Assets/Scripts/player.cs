@@ -36,7 +36,7 @@ public class player : MonoBehaviour
     {
         if (collider.gameObject.tag == "Enemy_Laser")
         {
-            health -= 5;
+            health -= 2;
             Destroy(collider.gameObject);
             Debug.Log(health);
 
