@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4807141099967151731}
   - component: {fileID: 4881865552730121917}
+  - component: {fileID: 3596542379698663258}
   m_Layer: 0
   m_Name: Player_0
   m_TagString: Untagged
@@ -46,6 +47,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 0
   thrustSpeed: 0
+--- !u!65 &3596542379698663258
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7119779328622688514}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.54, y: 1.42, z: 5.52}
+  m_Center: {x: 0, y: 0, z: 1.57}
 --- !u!1001 &2491636355984051912
 PrefabInstance:
   m_ObjectHideFlags: 0

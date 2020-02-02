@@ -6,13 +6,11 @@ public class ship_movements : MonoBehaviour
 {
     public float moveSpeed;
     public float thrustSpeed;
-    private float rot;
     // Start is called before the first frame update
     void Start()
     {
 	    moveSpeed = 25;
 	    thrustSpeed = 100;
-        rot = 0f;
         
 	//GetComponent<Rigidbody>().drag = 5000;
     }
