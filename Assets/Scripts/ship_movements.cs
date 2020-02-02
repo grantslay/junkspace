@@ -6,13 +6,15 @@ public class ship_movements : MonoBehaviour
 {
     public float moveSpeed;
     public float thrustSpeed;
+    public float junk_counter;
+    public float health;
     // Start is called before the first frame update
     void Start()
     {
 	    moveSpeed = 25;
 	    thrustSpeed = 100;
-        
-	//GetComponent<Rigidbody>().drag = 5000;
+	    junk_counter = 0;
+	    health = 100;
     }
 
     // Update is called once per frame
@@ -20,17 +22,25 @@ public class ship_movements : MonoBehaviour
     {
 	    transform.Translate(moveSpeed*Input.GetAxis("Horizontal")*Time.deltaTime,0f,moveSpeed*Input.GetAxis("Vertical")*Time.deltaTime);
     }
-/*
-	else
-	{
-		GetComponent<Rigidbody>().drag = 5000;
-		GetComponent<Rigidbody>().AddForce(transform.forward*0);
-	}*/
-    //}
-/*
-    void OnMouseDown()
+    
+    private void OnTriggerEnter(Collider collider)
     {
-	GetComponent<Rigidbody>().AddForce(transform.forward*thrustSpeed, ForceMode.Impulse);
+        if (collider.gameObject.tag == "Enemy_Laser")
+        {
+            health -= 5;
+            Destroy(collider.gameObject);
+            Debug.Log(health);
+            
+            if(health == 0)
+            {
+                Destroy(this.gameObject);
+            }
+        }
+        
+        else if (collider.gameObject.tag == "Junk")
+        {
+        	Destroy(collider.gameObject);
+        	junk_counter++;
+    	}
     }
-*/
 }
