@@ -26,7 +26,7 @@ public class turret_health : MonoBehaviour
             health -= 25;
             Destroy(enemy_projectile.gameObject);
             Debug.Log(health);
-            if (health == 0)
+            if (health <= 0)
             {
                 Destroy(this.gameObject);
             }
@@ -35,4 +35,6 @@ public class turret_health : MonoBehaviour
             greenBar.localScale = new Vector3((health / maxHealth) * 10, 1f, 1f);
         }
     }
+
+
 }

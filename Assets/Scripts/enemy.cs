@@ -12,16 +12,29 @@ public class enemy : MonoBehaviour
     public GameObject Junk_01;
     public GameObject Junk_02;
     public GameObject healthbar;
+	public GameObject grid_manager;
+    public float maxHealth = 100;
+    public float spawnTimer = 5;
 
     // Start is called before the first frame update
     void Start()
     {
-        health = 100f;
+        health = maxHealth;
+        grid_manager = GameObject.FindWithTag("GridManager");
     }
 
     // Update is called once per frame
     void Update()
     {
+        spawnTimer -= Time.deltaTime;
+        if (target == null)
+        {
+            target = getTarget(grid_manager);
+        }
+        else if (spawnTimer <= 0)
+        {
+            target = getTarget(grid_manager);
+        }
         Vector3 targetDirection = target.transform.position - transform.position;
         float rotateStep = speed * Time.deltaTime;
         Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, rotateStep, 0.0f);
@@ -30,10 +43,11 @@ public class enemy : MonoBehaviour
 
 
         float step = speed * Time.deltaTime;
+        
         if (Vector3.Distance(transform.position, target.transform.position) > 75)
         {
             transform.position = Vector3.MoveTowards(transform.position,
-                target.transform.position, step);
+                new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z), step);
         }
         else
         {
@@ -44,12 +58,7 @@ public class enemy : MonoBehaviour
                 shootTimer = 1;
             }
         }
-		
-		if (health <= 0.0)
-		{
-			spawn_junk();
-			Destroy(this.gameObject);
-		}
+
     }
 
     void spawn_junk()
@@ -87,5 +96,54 @@ public class enemy : MonoBehaviour
             }
         }
     }
-		//send junk in random direction
+
+    void OnTriggerEnter(Collider collider)
+    {
+        if (collider.gameObject.tag == "Player_Laser")
+        {
+            health -= 50;
+            Destroy(collider.gameObject);
+            Debug.Log(health);
+
+            if (health <= 0f)
+            {
+                spawn_junk();
+                Destroy(this.gameObject);
+            }
+            Transform bar = healthbar.transform.GetChild(2);
+            Transform greenBar = bar.GetChild(0);
+            greenBar.localScale = new Vector3((health / maxHealth) * 10, 1f, 1f);
+        }
+
+        
+    }
+
+    GameObject getTarget(GameObject grid_manager)
+	{
+		GameObject[,] targets = grid_manager.GetComponent<grid>().Grid;
+        int columns = targets.GetLength(0);
+        int rows = targets.GetLength(1);
+
+        float min_dist = 1000000f;
+        GameObject curr_target = null;
+
+        for (int i = 0; i < columns; i++)
+		{
+			for (int j = 0; j < rows; j++)
+			{
+				if(targets[i, j] != null && targets[i, j].tag != "Tile")
+                {
+                    float curr_dist = Vector3.Distance(transform.position, targets[i, j].transform.position);
+                    if (curr_dist < min_dist)
+                    {
+                        min_dist = curr_dist;
+                        curr_target = targets[i, j];
+                    }
+                }
+			}
+		}
+
+        return curr_target;
+
+	}
 }

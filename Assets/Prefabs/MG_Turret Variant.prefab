@@ -29,6 +29,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.98, y: 3.67, z: 4.79}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-6716262315796304122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4279552494580596324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b670a18329f1741cba91f0cc377b9f7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 500
+  health: 0
+  healthbar: {fileID: 0}
 --- !u!114 &7522885304889023059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107,6 +122,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MG_Turret Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: a1a2467fe366f4a888682fdf0f09b89c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Turret
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1a2467fe366f4a888682fdf0f09b89c, type: 3}

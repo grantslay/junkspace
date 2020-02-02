@@ -8,6 +8,9 @@ TagManager:
   - Tile
   - Junk
   - Player_Laser
+  - GridManager
+  - Turret
+  - PowerCore
   layers:
   - Default
   - TransparentFX

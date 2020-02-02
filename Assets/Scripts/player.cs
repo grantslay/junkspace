@@ -30,13 +30,14 @@ public class player : MonoBehaviour
                 shootTimer = 0.5f;
             }
         }
+
     }
 
     void OnTriggerEnter(Collider collider)
     {
         if (collider.gameObject.tag == "Enemy_Laser")
         {
-            health -= 5;
+            health -= 10;
             Destroy(collider.gameObject);
             Debug.Log(health);
 

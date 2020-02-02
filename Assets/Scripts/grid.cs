@@ -5,10 +5,12 @@ using UnityEngine;
 public class grid : MonoBehaviour
 {
     public GameObject[,] Grid;
+    public Vector3[,] Grid_pos;
     public GameObject tile;
     public GameObject capital_ship;
     public GameObject mg_turret;
     public GameObject healthbar;
+    public GameObject power_core;
     int columns, rows;
     Vector3 starting_point = new Vector3(-15f, -2.5f, -31.5f);
     // Start is called before the first frame update
@@ -18,6 +20,7 @@ public class grid : MonoBehaviour
         columns = (int)capital_ship_size.x / 8;
         rows = (int)capital_ship_size.z / 10;
         Grid = new GameObject[columns, rows];
+        Grid_pos = new Vector3[columns, rows];
         Vector3 current_pos = starting_point;
         for (int i = 0; i < columns; i++)
         {
@@ -32,6 +35,7 @@ public class grid : MonoBehaviour
 
     private void Update()
     {
+        //updateGrid();
         if (Input.GetMouseButtonDown(0))
         {
             Camera camera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
@@ -64,7 +68,39 @@ public class grid : MonoBehaviour
 
     private void SpawnTile(Vector3 current_pos, GameObject[,] Grid, int i, int j)
     {
-        Grid[i, j] = Instantiate(tile, current_pos, Quaternion.identity);
+        if (i == 2 && (j == 2 || j == 6 || j == 10))
+        {
+            Grid_pos[i, j] = current_pos;
+            Grid[i, j] = Instantiate(power_core, current_pos, Quaternion.identity);
+            GameObject healthbar_instance = Instantiate(healthbar, current_pos, Quaternion.identity);
+            healthbar_instance.GetComponent<healthbar>().target = Grid[i, j];
+            Grid[i, j].GetComponent<power_core>().healthbar = healthbar_instance;
+        }
+        else
+        {
+            Grid_pos[i, j] = current_pos;
+            Grid[i, j] = Instantiate(tile, current_pos, Quaternion.identity);
+        }
+       
         
     }
+    /*
+    public void updateGrid()
+    {
+        for (int i = 0; i < columns; i++)
+        {
+            for (int j = 0; j < rows; j++)
+            {
+                if (Grid[i, j].tag == "Turret")
+                {
+                    if (Grid[i, j].GetComponent<turret_health>().health <= 0)
+                    {
+                        Vector3 pos = Grid_pos[i, j];
+                        Grid[i, j] = Instantiate(tile, pos, Quaternion.identity);
+                    }
+
+                }
+            }
+        }
+    }*/
 }

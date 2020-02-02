@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class capital_ship : MonoBehaviour
 {
-    public int maxHealth = 500;
+    public int maxHealth = 2500;
     public int health;
     public GameObject healthbar;
     // Start is called before the first frame update
