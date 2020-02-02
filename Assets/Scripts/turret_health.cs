@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class turret_health : MonoBehaviour
 {
-    public int maxHealth = 500;
-    public int health;
+    public float maxHealth = 500;
+    public float health;
     public GameObject healthbar;
     // Start is called before the first frame update
     void Start()
@@ -16,7 +16,9 @@ public class turret_health : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        Transform bar = healthbar.transform.GetChild(2);
+        Transform greenBar = bar.GetChild(0);
+        greenBar.localScale = new Vector3((health / maxHealth) * 10, 1f, 1f);
     }
 
     private void OnTriggerEnter(Collider enemy_projectile)
@@ -30,9 +32,7 @@ public class turret_health : MonoBehaviour
             {
                 Destroy(this.gameObject);
             }
-            Transform bar = healthbar.transform.GetChild(2);
-            Transform greenBar = bar.GetChild(0);
-            greenBar.localScale = new Vector3((health / maxHealth) * 10, 1f, 1f);
+            
         }
     }
 

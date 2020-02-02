@@ -3,32 +3,36 @@ using System.Collections.Generic;
 using UnityEngine;
 using static System.Math;
 using static System.Random;
+using TMPro;
 
 public class game_manager : MonoBehaviour
 {
 	public GameObject enemy;
     public GameObject healthbar;
     public GameObject player;
+    public GameObject player_instance;
     public GameObject camera;
     public int enemy_spawns;
-    public float spawnTimer = 10f;
+    public int current_spawns;
+    public float spawnTimer = 20f;
     public ArrayList enemies = new ArrayList();
     //public GameObject[] enemies;
     public int power;
     public int wave_number;
 	public Rect wave_number_display;
-
+    public int power_core_count = 3;
+    private bool GameOver = false;
     // Start is called before the first frame update
     void Start()
     {
-        GameObject player_instance = Instantiate(player, new Vector3(0, 10f, 0), Quaternion.identity);
+        player_instance = Instantiate(player, new Vector3(0, 10f, 0), Quaternion.identity);
         GameObject healthbar_instance = Instantiate(healthbar, new Vector3(0, 20f, 0), Quaternion.identity);
         healthbar_instance.GetComponent<healthbar>().target = player_instance;
         player_instance.GetComponent<player>().healthbar = healthbar_instance;
         GameObject camera_instance = Instantiate(camera, new Vector3(0, 20f, 0), Quaternion.identity);
         camera_instance.GetComponent<camera>().target = player_instance;
         power = 0;
-        enemy_spawns = 0;
+        enemy_spawns = 2;
         wave_number = power + 1;
         wave_number_display = new Rect(10, 10, 100, 20);
     }
@@ -36,6 +40,17 @@ public class game_manager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Transform player_wave = player_instance.transform.GetChild(2);
+        player_wave = player_wave.GetChild(1);
+        player_wave.GetComponent<TextMeshProUGUI>().text = "Wave: " + wave_number;
+        if(power_core_count == 0 && GameOver == false)
+        {
+            GameOver = true;
+            player_wave = player_instance.transform.GetChild(2);
+            player_wave = player_wave.GetChild(0);
+            player_wave.gameObject.SetActive(true);
+            player_wave.GetComponent<TextMeshProUGUI>().text = "GAME OVER \n You survived until wave " + wave_number;
+        }
         //pick random spawn direction
         if (enemy_spawns > 0)
         {
@@ -89,10 +104,11 @@ public class game_manager : MonoBehaviour
 
         if(spawnTimer <= 0) //if (enemy_spawns <= 0 && enemies.Count <= 0)	//does the ArrayList get decremented when the enemies get destroyed
         {
-			enemy_spawns = (int) System.Math.Pow(2, power);
-			power++;
-			wave_number++;
-            spawnTimer = 10f;
+            current_spawns += 5;
+            enemy_spawns = current_spawns;
+            spawnTimer = 20f + (10 * wave_number);
+            wave_number++;
+         
 		}
         
         void OnGUI()

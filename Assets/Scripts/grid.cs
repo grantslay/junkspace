@@ -62,6 +62,36 @@ public class grid : MonoBehaviour
                         }
                     }
                 }
+
+                if (rayHit.collider.tag == "Turret")
+                {
+                    GameObject turret = rayHit.collider.gameObject;
+                    for (int i = 0; i < columns; i++)
+                    {
+                        for (int j = 0; j < rows; j++)
+                        {
+                            if (Grid[i, j].Equals(turret) && Grid[i, j].GetComponent<turret_health>().health < Grid[i, j].GetComponent<turret_health>().maxHealth)
+                            {
+                                Grid[i, j].GetComponent<turret_health>().health += 25;
+                            }
+                        }
+                    }
+                }
+
+                if (rayHit.collider.tag == "PowerCore")
+                {
+                    GameObject powercore = rayHit.collider.gameObject;
+                    for (int i = 0; i < columns; i++)
+                    {
+                        for (int j = 0; j < rows; j++)
+                        {
+                            if (Grid[i, j].Equals(powercore) && Grid[i, j].GetComponent<power_core>().health < Grid[i, j].GetComponent<power_core>().maxHealth)
+                            {
+                                Grid[i, j].GetComponent<power_core>().health += 25;
+                            }
+                        }
+                    }
+                }
             }
         }
     }

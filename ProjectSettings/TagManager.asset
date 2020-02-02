@@ -11,6 +11,8 @@ TagManager:
   - GridManager
   - Turret
   - PowerCore
+  - Friendly
+  - GameManager
   layers:
   - Default
   - TransparentFX
