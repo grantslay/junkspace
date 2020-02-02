@@ -6,6 +6,7 @@ public class enemy_laser : MonoBehaviour
 {
 
     public float shootingSpeed = 75;
+    public int damage = 10;
     // Start is called before the first frame update
     void Start()
     {

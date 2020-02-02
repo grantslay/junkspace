@@ -19,6 +19,20 @@ public class player : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+
+    {
+        if (Input.GetKey("space"))
+        {
+            shootTimer -= Time.deltaTime;
+            if (shootTimer <= 0f)
+            {
+                Transform spawnPoint = transform.GetChild(1);
+                Instantiate(laser, new Vector3(spawnPoint.position.x, spawnPoint.position.y, spawnPoint.position.z), transform.rotation);
+                shootTimer = 0.5f;
+            }
+        }
+
+
     {
         if (Input.GetKey("space"))
         {
@@ -37,7 +51,9 @@ public class player : MonoBehaviour
     {
         if (collider.gameObject.tag == "Enemy_Laser")
         {
+
             health -= 10;
+
             Destroy(collider.gameObject);
             Debug.Log(health);
 
