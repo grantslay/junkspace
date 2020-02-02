@@ -6,7 +6,7 @@ using static System.Random;
 
 public class game_manager : MonoBehaviour
 {
-    public GameObject enemy;
+	public GameObject enemy;
     public GameObject healthbar;
     public GameObject player;
     public GameObject camera;
@@ -14,6 +14,8 @@ public class game_manager : MonoBehaviour
     public ArrayList enemies = new ArrayList();
     //public GameObject[] enemies;
     public int power;
+    public int wave_number;
+	public Rect wave_number_display;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +28,8 @@ public class game_manager : MonoBehaviour
         camera_instance.GetComponent<camera>().target = player_instance;
         power = 0;
         enemy_spawns = 0;
+        wave_number = power + 1;
+        wave_number_display = new Rect(10, 10, 100, 20);
     }
 
     // Update is called once per frame
@@ -94,13 +98,12 @@ public class game_manager : MonoBehaviour
         {
 			enemy_spawns = (int) System.Math.Pow(2, power);
 			power++;
-			
-			display_wave_number(power);
+			wave_number++;
 		}
         
-        void display_wave_number(int wave_number)
+        void OnGUI()
         {
-        	GUI.Label(new Rect(10, 10, 100, 20), "Wave " + wave_number);
+        	GUI.Label(wave_number_display, "Wave " + wave_number);
         }
     }
 }
