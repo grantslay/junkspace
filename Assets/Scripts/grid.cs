@@ -8,6 +8,7 @@ public class grid : MonoBehaviour
     public GameObject tile;
     public GameObject capital_ship;
     public GameObject mg_turret;
+    public GameObject healthbar;
     int columns, rows;
     Vector3 starting_point = new Vector3(-15f, -2.5f, -31.5f);
     // Start is called before the first frame update
@@ -50,6 +51,9 @@ public class grid : MonoBehaviour
                             {
                                 Destroy(Grid[i, j].gameObject);
                                 Grid[i, j] = Instantiate(mg_turret, new Vector3(tile.transform.position.x, tile.transform.position.y, tile.transform.position.z), Quaternion.identity);
+                                GameObject healthbar_instance = Instantiate(healthbar, new Vector3(tile.transform.position.x, tile.transform.position.y, tile.transform.position.z), Quaternion.identity);
+                                healthbar_instance.GetComponent<healthbar>().target = Grid[i, j];
+                                Grid[i, j].GetComponent<mg_turret>().healthbar = healthbar_instance;
                             }
                         }
                     }

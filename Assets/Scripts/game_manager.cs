@@ -14,7 +14,7 @@ public class game_manager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameObject player_instance = Instantiate(player, new Vector3(0, 20f, 0), Quaternion.identity);
+        GameObject player_instance = Instantiate(player, new Vector3(0, 10f, 0), Quaternion.identity);
         GameObject healthbar_instance = Instantiate(healthbar, new Vector3(0, 20f, 0), Quaternion.identity);
         healthbar_instance.GetComponent<healthbar>().target = player_instance;
         GameObject camera_instance = Instantiate(camera, new Vector3(0, 20f, 0), Quaternion.identity);

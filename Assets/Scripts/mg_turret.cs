@@ -6,6 +6,7 @@ public class mg_turret : MonoBehaviour
 {
 
     public int health = 500;
+    public GameObject healthbar;
     // Start is called before the first frame update
     void Start()
     {
