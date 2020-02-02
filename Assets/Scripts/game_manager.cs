@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Math;
 
 public class game_manager : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class game_manager : MonoBehaviour
     public GameObject player;
     public GameObject camera;
     public int enemy_spawns;
-    public ArrayList enemies = new ArrayList<GameObject>();
+    public ArrayList enemies = new ArrayList();
     //public GameObject[] enemies;
     public int power;
 
@@ -92,9 +93,13 @@ public class game_manager : MonoBehaviour
         {
 			enemy_spawns = Math.Pow(2, power);
 			power++;
+			
+			display_wave_number(power);
 		}
-
-        //pick random spawn position from the direction picked
-        //spawn at position
+        
+        void display_wave_number(int wave_number)
+        {
+        	GUI.Label(new Rect(10, 10, 100, 20), "Wave " + wave_number);
+        }
     }
 }
