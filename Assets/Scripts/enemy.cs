@@ -1,14 +1,13 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class enemy : MonoBehaviour
 {
-/*
     public GameObject target;
     public GameObject laser;
     public float speed = 2;
-    public float shootTimer = 3;*/
+    public float shootTimer = 3;
     public float health;
     public GameObject Junk_01;
     public GameObject Junk_02;
@@ -16,13 +15,12 @@ public class enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       health = 0.0f; 
+        health = 0.0f;
     }
 
     // Update is called once per frame
     void Update()
     {
-	    /*
         Vector3 targetDirection = target.transform.position - transform.position;
         float rotateStep = speed * Time.deltaTime;
         Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, rotateStep, 0.0f);
@@ -45,14 +43,14 @@ public class enemy : MonoBehaviour
                 shootTimer = 3;
             }
         }
-*/
+		
 		if (health == 0.0)
 		{
 			spawn_junk();
 			Destroy(this.gameObject);
 		}
     }
-
+    
     void spawn_junk()
     {
 		//get current position
@@ -88,5 +86,4 @@ public class enemy : MonoBehaviour
 			}
 		}
 		//send junk in random direction
-    }
 }

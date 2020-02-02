@@ -7,6 +7,7 @@ public class grid : MonoBehaviour
     public GameObject[,] Grid;
     public GameObject tile;
     public GameObject capital_ship;
+    public GameObject mg_turret;
     int columns, rows;
     Vector3 starting_point = new Vector3(-15f, -2.5f, -31.5f);
     // Start is called before the first frame update
@@ -44,7 +45,11 @@ public class grid : MonoBehaviour
                     {
                         for (int j = 0; j < rows; j++)
                         {
-                            
+                            if(Grid[i, j].Equals(tile))
+                            {
+                                Destroy(Grid[i, j].gameObject);
+                                Grid[i, j] = Instantiate(mg_turret, new Vector3(tile.transform.position.x, tile.transform.position.y, tile.transform.position.z), Quaternion.identity);
+                            }
                         }
                     }
                 }
