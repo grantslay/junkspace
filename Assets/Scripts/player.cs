@@ -6,13 +6,15 @@ public class player : MonoBehaviour
 {
     public float shootTimer = 0.5f;
     public GameObject laser;
+    public GameObject healthbar;
     public float junk_counter;
+    public float maxHealth = 100;
     public float health;
     // Start is called before the first frame update
     void Start()
     {
         junk_counter = 0;
-        health = 100;
+        health = maxHealth;
     }
 
     // Update is called once per frame
@@ -38,10 +40,13 @@ public class player : MonoBehaviour
             Destroy(collider.gameObject);
             Debug.Log(health);
 
-            if (health >= 0f)
+            if (health <= 0f)
             {
                 Destroy(this.gameObject);
             }
+            Transform bar = healthbar.transform.GetChild(2);
+            Transform greenBar = bar.GetChild(0);
+            greenBar.localScale = new Vector3((health/maxHealth)*10, 1f, 1f);
         }
 
         else if (collider.gameObject.tag == "Junk")

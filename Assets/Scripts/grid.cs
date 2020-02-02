@@ -53,7 +53,7 @@ public class grid : MonoBehaviour
                                 Grid[i, j] = Instantiate(mg_turret, new Vector3(tile.transform.position.x, tile.transform.position.y, tile.transform.position.z), Quaternion.identity);
                                 GameObject healthbar_instance = Instantiate(healthbar, new Vector3(tile.transform.position.x, tile.transform.position.y, tile.transform.position.z), Quaternion.identity);
                                 healthbar_instance.GetComponent<healthbar>().target = Grid[i, j];
-                                Grid[i, j].GetComponent<mg_turret>().healthbar = healthbar_instance;
+                                Grid[i, j].GetComponent<turret_health>().healthbar = healthbar_instance;
                             }
                         }
                     }

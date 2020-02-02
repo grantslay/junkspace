@@ -17,6 +17,7 @@ public class game_manager : MonoBehaviour
         GameObject player_instance = Instantiate(player, new Vector3(0, 10f, 0), Quaternion.identity);
         GameObject healthbar_instance = Instantiate(healthbar, new Vector3(0, 20f, 0), Quaternion.identity);
         healthbar_instance.GetComponent<healthbar>().target = player_instance;
+        player_instance.GetComponent<player>().healthbar = healthbar_instance;
         GameObject camera_instance = Instantiate(camera, new Vector3(0, 20f, 0), Quaternion.identity);
         camera_instance.GetComponent<camera>().target = player_instance;
     }

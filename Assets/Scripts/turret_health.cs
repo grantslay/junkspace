@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class capital_ship : MonoBehaviour
+public class turret_health : MonoBehaviour
 {
     public int maxHealth = 500;
     public int health;
@@ -16,7 +16,7 @@ public class capital_ship : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void OnTriggerEnter(Collider enemy_projectile)
@@ -26,7 +26,7 @@ public class capital_ship : MonoBehaviour
             health -= 25;
             Destroy(enemy_projectile.gameObject);
             Debug.Log(health);
-            if(health == 0)
+            if (health == 0)
             {
                 Destroy(this.gameObject);
             }

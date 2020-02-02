@@ -107,6 +107,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootTimer: 1
   laser: {fileID: 2137643408567369614, guid: a0af6b042c65a4fa8a9354d209448ed5, type: 3}
+  healthbar: {fileID: 0}
   junk_counter: 0
   health: 0
 --- !u!54 &1876968392714474852
