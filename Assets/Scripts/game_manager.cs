@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Math;
+using static System.Math;
+using static System.Random;
 
 public class game_manager : MonoBehaviour
 {
@@ -91,7 +92,7 @@ public class game_manager : MonoBehaviour
         
         else //if (enemy_spawns <= 0 && enemies.Count <= 0)	//does the ArrayList get decremented when the enemies get destroyed
         {
-			enemy_spawns = Math.Pow(2, power);
+			enemy_spawns = (int) System.Math.Pow(2, power);
 			power++;
 			
 			display_wave_number(power);
